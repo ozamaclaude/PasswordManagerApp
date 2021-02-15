@@ -25,7 +25,7 @@ namespace PasswordManagerApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\M.Ozama\\forJob\\accountMng\\passinfo.csv")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\M.Ozama\\forJob\\dev\\temp\\passinfo_dev_.csv")]
         public string accountfile_path {
             get {
                 return ((string)(this["accountfile_path"]));

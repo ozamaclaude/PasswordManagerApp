@@ -2,6 +2,7 @@
 using PasswordManagerApp.Services;
 using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Services.Dialogs;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Unity;
@@ -49,12 +50,14 @@ namespace PasswordManagerApp.ViewModels
 
         private IUnityContainer _container;
         private IAccountFileReader _reader;
+        private readonly IDialogService dlgService = null;
 
         public DelegateCommand AddCommand { get; private set; }
         public DelegateCommand RegisterCommand { get; private set; }
 
-        public MainWindowViewModel(IUnityContainer container)
+        public MainWindowViewModel(IUnityContainer container, IDialogService dialogService)
         {
+            dlgService = dialogService;
             _container = container;
             Setup();
         }
@@ -66,12 +69,28 @@ namespace PasswordManagerApp.ViewModels
 
             _reader = _container.Resolve<IAccountFileReader>();
             var readLines = _reader.ReadFile();
+
+            if(readLines == null)
+            {
+                ShowDialog("ファイルが存在しません。\n環境を見直してください");
+                return;
+            }
+
             readLines.ForEach(x => Accounts.Add(new Account
             {
                 AccountTitle = x.AccountTitle,
                 UserId = x.UserId,
                 Password = x.Password
             }));
+        }
+
+        private void ShowDialog(string msg, bool isWarn = true)
+        {
+            IDialogResult result = null;
+            var isWarning = isWarn.ToString();
+            this.dlgService.ShowDialog("ServiceDialog",
+                    new DialogParameters { { "Message1", msg }, { "Message2", isWarning } },
+                    ret => result = ret);
         }
 
         private void AddAccount()

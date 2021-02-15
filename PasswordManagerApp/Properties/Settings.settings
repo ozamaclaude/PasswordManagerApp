@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="accountfile_path" Type="System.String" Scope="User">
-      <Value Profile="(Default)">C:\Users\M.Ozama\forJob\accountMng\passinfo.csv</Value>
+      <Value Profile="(Default)">C:\Users\M.Ozama\forJob\dev\temp\passinfo_dev_.csv</Value>
     </Setting>
   </Settings>
 </SettingsFile>
