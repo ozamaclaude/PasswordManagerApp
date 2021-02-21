@@ -63,19 +63,20 @@
             <TextBlock Grid.Column="1" Grid.Row="5" Text="パスワード" 
                        Foreground="White" FontSize="18" Margin="30 0 0 0"/>
             <TextBox Grid.Column="3" Grid.Row="1" Background="LightBlue" 
-                     Foreground="DarkBlue" FontSize="18" Margin="30 0 30 0"
+                     Foreground="DarkBlue" FontSize="18" Margin="30 0 0 0"
                      Text="{Binding AccountTitle}"/>
             <TextBox Grid.Column="3" Grid.Row="3" Background="LightBlue"
-                     Foreground="DarkBlue" FontSize="18" Margin="30 0 30 0"
+                     Foreground="DarkBlue" FontSize="18" Margin="30 0 0 0"
                      Text="{Binding AccountId}"/>
             <TextBox Grid.Column="3" Grid.Row="5" Background="LightBlue" 
-                     Foreground="DarkBlue" FontSize="18" Margin="30 0 30 0"
+                     Foreground="DarkBlue" FontSize="18" Margin="30 0 0 0"
                      Text="{Binding AccountPassword}" />
         </Grid>
         <Grid Grid.Column="1" Grid.Row="5">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="50"/>
+                <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="150"/>
                 <ColumnDefinition Width="150"/>
             </Grid.ColumnDefinitions>
@@ -83,8 +84,11 @@
                     FontSize="15"  Margin="10 0 0 0" Width="120"
                     Command="{Binding AddCommand}"/>
             <Button Grid.Column="3" Content="登録" Foreground="White" Background="Red" 
-                    FontSize="15" Margin="10 0 0 0" Width="120" 
+                    FontSize="15" Margin="0 0 0 0" Width="120" 
                     Command="{Binding RegisterCommand}"/>
+            <Button Grid.Column="4" Content="snapshot" Foreground="White" Background="Green" 
+                    FontSize="15" Margin="0 0 0 0" Width="120" 
+                    Command="{Binding SnapshotCommand}"/>
         </Grid>
     </Grid>
 </Controls:MetroWindow>

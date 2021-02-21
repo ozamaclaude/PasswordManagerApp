@@ -14,16 +14,23 @@ namespace PasswordManagerApp.Services
         void SayHello();
         List<Account> ReadFile();
         void FlushContents();
-        void WriteFile(List<Account> accounts);
+        void WriteFile(List<Account> accounts, bool isSnap = false);
     }
 
     class AccountFileReader : IAccountFileReader
     {
         public void SayHello() { Debug.WriteLine("Hello world!"); }
 
-        public void WriteFile(List<Account> accounts)
+        public void WriteFile(List<Account> accounts, bool isSnap = false)
         {
             var path = Properties.Settings.Default.accountfile_path;
+            if (isSnap) 
+            {
+                var fileName =DateTime.Now.ToString("yyyyMMddHHmmss_");
+                fileName += "snapshot.csv";
+                path = Path.Combine(Properties.Settings.Default.snapshot_path, fileName); 
+            }
+
             using (var fileStream = new StreamWriter(path, true))
             {
                 accounts.ForEach(x => Write(fileStream, x));

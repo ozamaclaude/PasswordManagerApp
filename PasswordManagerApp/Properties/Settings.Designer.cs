@@ -25,13 +25,25 @@ namespace PasswordManagerApp.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\M.Ozama\\forJob\\dev\\temp\\passinfo_dev_.csv")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\M.Ozama\\forJob\\dev\\temp\\passinfo_dev.csv")]
         public string accountfile_path {
             get {
                 return ((string)(this["accountfile_path"]));
             }
             set {
                 this["accountfile_path"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\Users\\M.Ozama\\forJob\\dev\\temp\\")]
+        public string snapshot_path {
+            get {
+                return ((string)(this["snapshot_path"]));
+            }
+            set {
+                this["snapshot_path"] = value;
             }
         }
     }

@@ -54,6 +54,7 @@ namespace PasswordManagerApp.ViewModels
 
         public DelegateCommand AddCommand { get; private set; }
         public DelegateCommand RegisterCommand { get; private set; }
+        public DelegateCommand SnapshotCommand { get; private set; }
 
         public MainWindowViewModel(IUnityContainer container, IDialogService dialogService)
         {
@@ -66,6 +67,7 @@ namespace PasswordManagerApp.ViewModels
         {
             AddCommand = new DelegateCommand(AddAccount);
             RegisterCommand = new DelegateCommand(RegisterAccounts);
+            SnapshotCommand = new DelegateCommand(SnapshotAccounts);
 
             _reader = _container.Resolve<IAccountFileReader>();
             var readLines = _reader.ReadFile();
@@ -127,6 +129,12 @@ namespace PasswordManagerApp.ViewModels
         {
             _reader.FlushContents();
             _reader.WriteFile(Accounts.ToList());
+        }
+
+        private void SnapshotAccounts()
+        {
+            _reader.FlushContents();
+            _reader.WriteFile(Accounts.ToList(), true);
         }
     }
 }
